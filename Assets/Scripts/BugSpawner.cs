@@ -25,10 +25,22 @@ public class BugSpawner : MonoBehaviour
             randX = Random.Range(-5.0f, 5.0f);
             whereToSpawn = new Vector2(randX, transform.position.y);
             GameObject newBug = Instantiate(bug, whereToSpawn, Quaternion.identity);
+
+            newBug.GetComponent<Renderer>().material.color = randomColor();
+
             Vector3 temp = newBug.transform.localScale;
             temp.x = temp.x / Random.Range(1f, 4.0f);
             temp.y = temp.y / Random.Range(1f, 4.0f);
             newBug.transform.localScale = temp;
         }
+    }
+
+    Color randomColor()
+    {
+        return new Color(
+            Random.Range(0f, 1f),
+            Random.Range(0f, 1f),
+            Random.Range(0f, 1f)
+        );
     }
 }
