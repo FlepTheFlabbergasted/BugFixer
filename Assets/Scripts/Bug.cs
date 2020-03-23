@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     public int health = 100;
+    public float speed = 1;
     public Rigidbody2D rb;
     public GameObject deathEffect;
 
@@ -17,7 +18,7 @@ public class Bug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.position += transform.right * speed * Time.deltaTime;
     }
 
     public void TakeDamage(int damage)

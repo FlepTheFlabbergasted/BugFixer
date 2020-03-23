@@ -6,8 +6,7 @@ public class BugSpawner : MonoBehaviour
 {
     public GameObject bug;
     float randX;
-    Vector2 whereToSpawn;
-    public float spawnRateSec = 2f;
+    public float spawnRateSec = 1f;
     float nextSpawn = 0.0f;
 
     // Start is called before the first frame update
@@ -21,19 +20,54 @@ public class BugSpawner : MonoBehaviour
     {
         if (Time.time > nextSpawn)
         {
+            // Spawntime
             nextSpawn = Time.time + Random.Range(0.5f, 2.0f);
-            randX = Random.Range(-10.0f, 10.0f);
-            whereToSpawn = new Vector2(randX, transform.position.y);
-            GameObject newBug = Instantiate(bug, whereToSpawn, Quaternion.identity);
 
-            newBug.GetComponent<Renderer>().material.color = randomColor();
-
-            Vector3 temp = newBug.transform.localScale;
-            temp.x /= Random.Range(1f, 2.5f);
-            temp.y /= Random.Range(2.5f, 3.0f);
-
-            newBug.transform.localScale = temp;
+            SpawnBug();
         }
+    }
+
+    public GameObject SpawnBug()
+    {
+        // Looks
+        Vector3 scale = bug.transform.localScale;
+        scale.x /= Random.Range(0.8f, 3f);
+        scale.y /= Random.Range(2f, 3.5f);
+        Color color = randomColor();
+
+        float speed = Random.Range(2f, 15f);
+
+        // Spawn position, outside the viewport on right or left side
+        Vector2 viewPortSide;
+        Vector2 spawnPos;
+        int direction;
+        if (Random.value < 0.5f)
+        {
+            viewPortSide = new Vector2(0f, 0f);
+            spawnPos = Camera.main.ViewportToWorldPoint(viewPortSide);
+            spawnPos.x -= scale.x * 2.5f;
+            spawnPos.y += scale.y * 1.5f;
+            direction = 1;
+        }
+        else
+        {
+            viewPortSide = new Vector2(1f, 0f);
+            spawnPos = Camera.main.ViewportToWorldPoint(viewPortSide);
+            spawnPos.x += scale.x * 2.5f;
+            spawnPos.y += scale.y * 1.5f;
+            direction = -1;
+        }
+
+        GameObject newBug = Instantiate(bug, spawnPos, Quaternion.identity);
+        Bug bugComponent = newBug.gameObject.GetComponent<Bug>();
+
+        bugComponent.speed = speed;
+
+        newBug.transform.localScale = scale;
+        newBug.transform.forward *= direction;
+        newBug.GetComponent<Renderer>().material.color = color;
+
+        return newBug;
     }
 
     Color randomColor()
