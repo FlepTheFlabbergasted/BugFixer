@@ -22,15 +22,16 @@ public class BugSpawner : MonoBehaviour
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + Random.Range(0.5f, 2.0f);
-            randX = Random.Range(-5.0f, 5.0f);
+            randX = Random.Range(-10.0f, 10.0f);
             whereToSpawn = new Vector2(randX, transform.position.y);
             GameObject newBug = Instantiate(bug, whereToSpawn, Quaternion.identity);
 
             newBug.GetComponent<Renderer>().material.color = randomColor();
 
             Vector3 temp = newBug.transform.localScale;
-            temp.x = temp.x / Random.Range(1f, 4.0f);
-            temp.y = temp.y / Random.Range(1f, 4.0f);
+            temp.x /= Random.Range(1f, 2.5f);
+            temp.y /= Random.Range(2.5f, 3.0f);
+
             newBug.transform.localScale = temp;
         }
     }
