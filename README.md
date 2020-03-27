@@ -38,21 +38,21 @@ There is no winning, only faster, bigger bugs.
 
 ## Phases
 
-### Phase 1
+### Phase 1 - Complete
 
 - Bugs
-  - Rectangles that get randomly created and move with set speed (no textures)
-  - **Not in planning but added** - Randomly stop and continue
+  - ~~Rectangles that get randomly created and move with set speed (no textures)~~
+  - ~~**Not in planning but added** - Randomly stop and continue~~
 - Turret
-  - Rectangle that pivots and shoots rectangles (no textures)
-  - Follow mouse
+  - ~~Rectangle that pivots and shoots rectangles (no textures)~~
+  - ~~Follow mouse~~
 - Code
-  - Basic gameloop
+  - ~~Basic gameloop~~
 - UI/Player
-  - No lives
-  - No points
+  - ~~No lives~~
+  - ~~No points~~
 - Gameplay
-  - No dying (player or bugs)
+  - ~~No dying (player or bugs)~~ (bugs die from bullets)
 
 ### Phase 2
 

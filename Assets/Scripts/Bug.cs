@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Timers;
 
 public class Bug : MonoBehaviour
 {
     public int health = 100;
     public float speed = 1;
+    public float currentSpeed = 1;
+    public float erraticLevel = 9.9f;
+    private static System.Timers.Timer erraticTimer;
     public Rigidbody2D rb;
     public GameObject deathEffect;
 
@@ -18,7 +21,12 @@ public class Bug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * speed * Time.deltaTime;
+        transform.position += transform.right * currentSpeed * Time.deltaTime;
+        // If we're not already standing still
+        if (currentSpeed != 0)
+        {
+            BeErratic();
+        }
     }
 
     public void TakeDamage(int damage)
@@ -35,5 +43,36 @@ public class Bug : MonoBehaviour
     {
         // Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+
+    void BeErratic()
+    {
+        // X% chance that we stop
+        if (UnityEngine.Random.Range(0f, 10f) > erraticLevel)
+        {
+            StopFor(UnityEngine.Random.Range(1000, 2000));
+        }
+        // else if (UnityEngine.Random.Range(0f, 10f) > erraticLevel)
+        // {
+        //     // TODO: Change direction
+        // }
+    }
+
+    void StopFor(int duration)
+    {
+        currentSpeed = 0;
+
+        // Create a timer with a two second interval.
+        erraticTimer = new System.Timers.Timer(duration);
+        // Hook up the Elapsed event for the timer.
+        erraticTimer.Elapsed += OnTimedEvent;
+        erraticTimer.AutoReset = true;
+        erraticTimer.Enabled = true;
+    }
+
+    private void OnTimedEvent(object sender, ElapsedEventArgs elapsedEventArg)
+    {
+        currentSpeed = speed;
     }
 }
