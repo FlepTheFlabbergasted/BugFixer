@@ -64,20 +64,17 @@ There is no winning, only faster, bigger bugs.
 - Code
   - ~~Sprite interaction~~
   - ~~Removing of sprites (Implement spawner/handler?)~~
-- UI/Player
 - Gameplay
   - ~~Bugs die when hit~~
 
-### Phase 3
+### Phase 3 - Complete
 
 - Bugs
   - ~~Random change of direction~~
-- Turret
-- Code
 - UI/Player
-  - Counter when killing bugs
+  - ~~Counter when killing bugs~~
 - Gameplay
-  - Primitive game score is shown
+  - ~~Primitive game score is shown~~
 
 ### Phase 4
 
@@ -86,6 +83,12 @@ There is no winning, only faster, bigger bugs.
 - Turret
   - Limit movement, little lag after mouse
   - Not att the way up too???
-- Code
+
+### Phase 5
+
+- Bugs
+  - Crawl on the ceiling, remove when reaching the turret
+- Turret
+  - Loses health when bug reaches it
 - UI/Player
-- Gameplay
+  - Implement health
