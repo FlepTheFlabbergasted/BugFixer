@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public float fireRate = 0;
+    public float fireRate = 0.3f;
+    float timeToFire = 0.0f;
     public float damage = 10;
     public float angle = 0;
     public GameObject bulletPrefab;
-
-    float timeToFire = 0;
     Transform firePoint;
 
     // Start is called before the first frame update
@@ -25,20 +24,16 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireRate == 0)
+        // Let the player shoot as fast as the player can. But still be able to hold down the button to fire at a set speed
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Shoot();
-            }
+            Shoot();
+            timeToFire = Time.time + fireRate;
         }
-        else
+        else if (Input.GetButton("Fire1") && Time.time > timeToFire)
         {
-            if (Input.GetButtonDown("Fire1") && Time.time > timeToFire)
-            {
-                timeToFire = Time.time + 1 / fireRate;
-                Shoot();
-            }
+            timeToFire = Time.time + fireRate;
+            Shoot();
         }
 
         // Point the Turret towards the mouse
