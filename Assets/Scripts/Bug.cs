@@ -43,6 +43,7 @@ public class Bug : MonoBehaviour
     {
         // Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        ScoreScript.scoreValue += 1;
     }
 
 
