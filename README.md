@@ -42,7 +42,7 @@ There is no winning, only faster, bigger bugs.
 
 - Bugs
   - ~~Rectangles that get randomly created and move with set speed (no textures)~~
-  - ~~**Not in planning but added** - Randomly stop and continue~~
+  - ~~Randomly stop and continue~~ (Not in planning but added)
 - Turret
   - ~~Rectangle that pivots and shoots rectangles (no textures)~~
   - ~~Follow mouse~~
@@ -52,26 +52,26 @@ There is no winning, only faster, bigger bugs.
   - ~~No lives~~
   - ~~No points~~
 - Gameplay
-  - ~~No dying (player or bugs)~~ (bugs die from bullets)
+  - ~~No dying (player or bugs)~~ (Bugs die from bullets)
 
-### Phase 2
+### Phase 2 - Complete
 
 - Bugs
-  - Remove rectangle when outside screen
-  - Remove rectangle when touching bullet rectangles
+  - ~~Remove rectangle when outside screen~~ - Scrapped
+  - ~~Remove rectangle when touching bullet rectangles~~
 - Turret
-  - Remove bullets when hitting bugs or outside screen
+  - ~~Remove bullets when hitting bugs or outside screen~~
 - Code
-  - Sprite interaction
-  - Removing of sprites (Implement spawner/handler?)
+  - ~~Sprite interaction~~
+  - ~~Removing of sprites (Implement spawner/handler?)~~
 - UI/Player
 - Gameplay
-  - Bugs die when hit
+  - ~~Bugs die when hit~~
 
 ### Phase 3
 
 - Bugs
-  - Random change of direction
+  - ~~Random change of direction~~
 - Turret
 - Code
 - UI/Player

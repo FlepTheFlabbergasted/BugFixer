@@ -62,6 +62,7 @@ public class BugSpawner : MonoBehaviour
         Bug bugComponent = newBug.gameObject.GetComponent<Bug>();
 
         bugComponent.speed = speed;
+        bugComponent.currentSpeed = speed;
 
         newBug.transform.localScale = scale;
         newBug.transform.forward *= direction;
