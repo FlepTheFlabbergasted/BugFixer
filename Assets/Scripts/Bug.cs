@@ -7,6 +7,7 @@ public class Bug : MonoBehaviour
     public int health = 100;
     public float speed = 1;
     public float currentSpeed = 1;
+    public int xForwardDirection = 1;
     public float erraticLevel = 9.9f;
     private static System.Timers.Timer erraticTimer;
     public Rigidbody2D rb;
@@ -21,11 +22,34 @@ public class Bug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * currentSpeed * Time.deltaTime;
+        // If we use "transform.position" the bugs glitch when hitting a wall
+        // transform.position += transform.right * currentSpeed * Time.deltaTime;
+        rb.velocity = new Vector3(xForwardDirection * currentSpeed, 0, 0);
+
         // If we're not already standing still
         if (currentSpeed != 0)
         {
             BeErratic();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Vector3 position = collision.gameObject.transform.position;
+            if (xForwardDirection > 0 && position.x > 0)
+            {
+                // Right wall
+                Debug.Log("Hit the right wall");
+                xForwardDirection *= -1;
+            }
+            else if (xForwardDirection < 0 && position.x < 0)
+            {
+                // Left wall
+                Debug.Log("Hit the left wall");
+                xForwardDirection *= -1;
+            }
         }
     }
 

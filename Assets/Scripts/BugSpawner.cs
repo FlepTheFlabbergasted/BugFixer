@@ -63,9 +63,9 @@ public class BugSpawner : MonoBehaviour
 
         bugComponent.speed = speed;
         bugComponent.currentSpeed = speed;
+        bugComponent.xForwardDirection = direction;
 
         newBug.transform.localScale = scale;
-        newBug.transform.forward *= direction;
         newBug.GetComponent<Renderer>().material.color = color;
 
         return newBug;
