@@ -6,7 +6,9 @@ public class Turret : MonoBehaviour
 {
     public float fireRate = 0.3f;
     float timeToFire = 0.0f;
-    public int health = 100;
+    public HealthBar healthBar;
+    public int maxHealth = 100;
+    public int currentHealth;
     public int damage = 100;
     float angle = 0;
     public int rotationalSpeed = 200; // degrees per second
@@ -16,6 +18,9 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
         firePoint = transform.Find("FirePoint");
         if (firePoint == null)
         {
@@ -77,9 +82,10 @@ public class Turret : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             GameOver();
         }
