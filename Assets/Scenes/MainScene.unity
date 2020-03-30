@@ -861,6 +861,11 @@ PrefabInstance:
       propertyPath: fireRate
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2147448258190598971, guid: 3994ee1ad8062f44a8248f2495ac961f,
+        type: 3}
+      propertyPath: rotationalSpeed
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3994ee1ad8062f44a8248f2495ac961f, type: 3}
 --- !u!1001 &9182801309359671605

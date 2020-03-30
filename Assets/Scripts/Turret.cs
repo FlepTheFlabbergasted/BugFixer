@@ -7,7 +7,8 @@ public class Turret : MonoBehaviour
     public float fireRate = 0.3f;
     float timeToFire = 0.0f;
     public float damage = 10;
-    public float angle = 0;
+    float angle = 0;
+    public int rotationalSpeed = 150; // n degrees per second
     public GameObject bulletPrefab;
     Transform firePoint;
 
@@ -36,11 +37,7 @@ public class Turret : MonoBehaviour
             Shoot();
         }
 
-        // Point the Turret towards the mouse
-        var pos = Camera.main.WorldToScreenPoint(transform.position);
-        var dir = Input.mousePosition - pos;
-        this.angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(this.angle, Vector3.forward);
+        RotateTowardsMouse();
     }
 
     void Shoot()
@@ -57,5 +54,19 @@ public class Turret : MonoBehaviour
         //     // Debug.DrawLine(firePointPosition, hit.point, Color.red);
         //     Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage");
         // }
+    }
+
+    void RotateTowardsMouse()
+    {
+        // Point the Turret towards the mouse
+        var pos = Camera.main.WorldToScreenPoint(transform.position);
+        var dir = Input.mousePosition - pos;
+        this.angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        // transform.rotation = Quaternion.AngleAxis(this.angle, Vector3.forward); // Turn instantly to mouse pos
+
+        // Rotate the turret at a certain speed towards the mouse, code from:
+        // https://answers.unity.com/questions/826613/how-would-i-slow-down-spinning-toward-the-mouse.html
+        Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 0, this.angle));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, rotationalSpeed * Time.deltaTime);
     }
 }

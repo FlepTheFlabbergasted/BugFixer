@@ -8,6 +8,7 @@ public class Bug : MonoBehaviour
     public float speed = 1;
     public float currentSpeed = 1;
     public int xForwardDirection = 1;
+    public int velY = 0;
     public float erraticLevel = 9.9f;
     private static System.Timers.Timer erraticTimer;
     public Rigidbody2D rb;
@@ -24,7 +25,7 @@ public class Bug : MonoBehaviour
     {
         // If we use "transform.position" the bugs glitch when hitting a wall
         // transform.position += transform.right * currentSpeed * Time.deltaTime;
-        rb.velocity = new Vector3(xForwardDirection * currentSpeed, 0, 0);
+        rb.velocity = new Vector3(xForwardDirection * currentSpeed, velY * currentSpeed, 0);
 
         // If we're not already standing still
         if (currentSpeed != 0)
@@ -42,13 +43,15 @@ public class Bug : MonoBehaviour
             {
                 // Right wall
                 Debug.Log("Hit the right wall");
-                xForwardDirection *= -1;
+                // xForwardDirection *= -1;
+                velY = 1;
             }
             else if (xForwardDirection < 0 && position.x < 0)
             {
                 // Left wall
                 Debug.Log("Hit the left wall");
-                xForwardDirection *= -1;
+                // xForwardDirection *= -1;
+                velY = 1;
             }
         }
     }
