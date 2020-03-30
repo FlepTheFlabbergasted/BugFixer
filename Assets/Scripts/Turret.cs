@@ -6,9 +6,9 @@ public class Turret : MonoBehaviour
 {
     public float fireRate = 0.3f;
     float timeToFire = 0.0f;
-    public float damage = 10;
+    public int damage = 100;
     float angle = 0;
-    public int rotationalSpeed = 150; // n degrees per second
+    public int rotationalSpeed = 200; // degrees per second
     public GameObject bulletPrefab;
     Transform firePoint;
 
@@ -42,7 +42,9 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bulletComponent = bullet.gameObject.GetComponent<Bullet>();
+        bulletComponent.damage = this.damage;
 
         // Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         // Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
@@ -58,15 +60,15 @@ public class Turret : MonoBehaviour
 
     void RotateTowardsMouse()
     {
-        // Point the Turret towards the mouse
-        var pos = Camera.main.WorldToScreenPoint(transform.position);
-        var dir = Input.mousePosition - pos;
+        // Calculate the angle from the turret to the mouse
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 dir = Input.mousePosition - pos;
         this.angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.AngleAxis(this.angle, Vector3.forward); // Turn instantly to mouse pos
 
         // Rotate the turret at a certain speed towards the mouse, code from:
         // https://answers.unity.com/questions/826613/how-would-i-slow-down-spinning-toward-the-mouse.html
         Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 0, this.angle));
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, rotationalSpeed * Time.deltaTime);
+        // transform.rotation = Quaternion.AngleAxis(this.angle, Vector3.forward); // Turn instantly to mouse pos
     }
 }

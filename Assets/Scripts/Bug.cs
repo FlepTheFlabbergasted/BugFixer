@@ -25,7 +25,7 @@ public class Bug : MonoBehaviour
     {
         // If we use "transform.position" the bugs glitch when hitting a wall
         // transform.position += transform.right * currentSpeed * Time.deltaTime;
-        rb.velocity = new Vector3(xForwardDirection * currentSpeed, velY * currentSpeed, 0);
+        rb.velocity = new Vector3(xForwardDirection * currentSpeed, velY * speed, 0);
 
         // If we're not already standing still
         if (currentSpeed != 0)
@@ -53,6 +53,10 @@ public class Bug : MonoBehaviour
                 // xForwardDirection *= -1;
                 velY = 1;
             }
+        }
+        else if (collision.gameObject.tag == "Ceiling")
+        {
+            xForwardDirection *= -1;
         }
     }
 

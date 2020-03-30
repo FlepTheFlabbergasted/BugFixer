@@ -103,6 +103,8 @@ There is no winning, only faster, bigger bugs.
 
 ### Phase 7
 
+- Turret
+  - Only dmg/kill one bug per bullet
 - UI/Player
 - Gameplay
   - Play/Start button
