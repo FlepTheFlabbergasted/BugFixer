@@ -57,7 +57,7 @@ There is no winning, only faster, bigger bugs.
 ### Phase 2 - Complete
 
 - Bugs
-  - ~~Remove rectangle when outside screen~~ - Scrapped
+  - ~~Remove rectangle when outside screen~~ (scrapped)
   - ~~Remove rectangle when touching bullet rectangles~~
 - Turret
   - ~~Remove bullets when hitting bugs or outside screen~~
@@ -76,13 +76,13 @@ There is no winning, only faster, bigger bugs.
 - Gameplay
   - ~~Primitive game score is shown~~
 
-### Phase 4
+### Phase 4 - Complete
 
 - Bugs
-  - Crawl up wall, remove when reaching top
+  - ~~Crawl up wall, remove when reaching top~~ (no removal)
 - Turret
-  - Limit movement, little lag after mouse
-  - Not att the way up too???
+  - ~~Limit movement, little lag after mouse~~
+  - Not att the way up too? - Not right now atleast
 
 ### Phase 5
 
@@ -92,3 +92,17 @@ There is no winning, only faster, bigger bugs.
   - Loses health when bug reaches it
 - UI/Player
   - Implement health
+
+### Phase 6
+
+- Bugs
+  - When die, fall (if on wall/ceiling) and slowly fade away
+- UI/Player
+- Gameplay
+  - Game over screen
+
+### Phase 7
+
+- UI/Player
+- Gameplay
+  - Play/Start button
