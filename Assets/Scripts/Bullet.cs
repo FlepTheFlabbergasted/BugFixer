@@ -16,13 +16,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Destroy(gameObject);
-
         Bug bug = hitInfo.GetComponent<Bug>();
         if (bug != null)
         {
             bug.TakeDamage(damage);
         }
+
+        Destroy(gameObject);
     }
 
     void OnBecameInvisible()

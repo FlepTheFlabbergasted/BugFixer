@@ -57,22 +57,20 @@ public class Bug : MonoBehaviour
             case "Ceiling":
                 xForwardDirection *= -1;
                 break;
-            case "Player":
-                Die();
-                break;
             default:
                 // Meh
                 break;
         }
     }
 
-
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        Turret turret = hitInfo.GetComponent<Turret>();
+        Turret turret = collider.GetComponent<Turret>();
         if (turret != null)
         {
             turret.TakeDamage(damage);
+
+            Die(); // Just to remove the bugs from the screen as of now
         }
     }
 
@@ -88,6 +86,7 @@ public class Bug : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("bug ded");
         // Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         ScoreScript.scoreValue += 1;

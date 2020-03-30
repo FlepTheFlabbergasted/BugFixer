@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8110407789575998847}
   - component: {fileID: 8110407789403493582}
   m_Layer: 0
-  m_Name: Turret 1
+  m_Name: Turret
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
+  health: 100
   damage: 100
   rotationalSpeed: 200
   bulletPrefab: {fileID: 233314723354604070, guid: fca745568f355c14a9114dea6cb05c6c,
@@ -139,7 +140,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

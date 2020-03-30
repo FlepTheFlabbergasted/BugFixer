@@ -87,6 +87,6 @@ public class Turret : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("YOU DIED");
+        Debug.Log("GAME OVER");
     }
 }
