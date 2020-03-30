@@ -87,11 +87,11 @@ There is no winning, only faster, bigger bugs.
 ### Phase 5
 
 - Bugs
-  - Crawl on the ceiling, remove when reaching the turret
+  - ~~Crawl on the ceiling, remove when reaching the turret~~
 - Turret
-  - Loses health when bug reaches it
+  - ~~Loses health when bug reaches it~~
 - UI/Player
-  - Implement health
+  - Implement and display health
 
 ### Phase 6
 

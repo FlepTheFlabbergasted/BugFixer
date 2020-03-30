@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour
 {
     public float fireRate = 0.3f;
     float timeToFire = 0.0f;
+    public int health = 100;
     public int damage = 100;
     float angle = 0;
     public int rotationalSpeed = 200; // degrees per second
@@ -43,6 +44,8 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Physics2D.IgnoreCollision(bullet.GetComponent<BoxCollider2D>(), GetComponent<BoxCollider2D>());
+
         Bullet bulletComponent = bullet.gameObject.GetComponent<Bullet>();
         bulletComponent.damage = this.damage;
 
@@ -70,5 +73,20 @@ public class Turret : MonoBehaviour
         Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 0, this.angle));
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, rotationalSpeed * Time.deltaTime);
         // transform.rotation = Quaternion.AngleAxis(this.angle, Vector3.forward); // Turn instantly to mouse pos
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("YOU DIED");
     }
 }

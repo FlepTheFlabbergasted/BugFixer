@@ -5,6 +5,7 @@ using System.Timers;
 public class Bug : MonoBehaviour
 {
     public int health = 100;
+    public int damage = 40;
     public float speed = 1;
     public float currentSpeed = 1;
     public int xForwardDirection = 1;
@@ -36,27 +37,42 @@ public class Bug : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        switch (collision.gameObject.tag)
         {
-            Vector3 position = collision.gameObject.transform.position;
-            if (xForwardDirection > 0 && position.x > 0)
-            {
-                // Right wall
-                Debug.Log("Hit the right wall");
-                // xForwardDirection *= -1;
-                velY = 1;
-            }
-            else if (xForwardDirection < 0 && position.x < 0)
-            {
-                // Left wall
-                Debug.Log("Hit the left wall");
-                // xForwardDirection *= -1;
-                velY = 1;
-            }
+            case "Wall":
+                Vector3 position = collision.gameObject.transform.position;
+                if (xForwardDirection > 0 && position.x > 0)
+                {
+                    // Right wall
+                    // Debug.Log("Hit the right wall");
+                    velY = 1;
+                }
+                else if (xForwardDirection < 0 && position.x < 0)
+                {
+                    // Left wall
+                    // Debug.Log("Hit the left wall");
+                    velY = 1;
+                }
+                break;
+            case "Ceiling":
+                xForwardDirection *= -1;
+                break;
+            case "Player":
+                Die();
+                break;
+            default:
+                // Meh
+                break;
         }
-        else if (collision.gameObject.tag == "Ceiling")
+    }
+
+
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Turret turret = hitInfo.GetComponent<Turret>();
+        if (turret != null)
         {
-            xForwardDirection *= -1;
+            turret.TakeDamage(damage);
         }
     }
 
