@@ -86,7 +86,6 @@ public class Bug : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("bug ded");
         // Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         ScoreScript.scoreValue += 1;

@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour
     public int currentHealth;
     public int damage = 100;
     float angle = 0;
-    public int rotationalSpeed = 200; // degrees per second
+    public int rotationalSpeed = 220; // degrees per second
     public GameObject bulletPrefab;
     Transform firePoint;
 
@@ -93,6 +93,6 @@ public class Turret : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("GAME OVER");
+        Debug.Log("############ GAME OVER ############");
     }
 }

@@ -252,7 +252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 66, y: 15.1}
+  m_AnchoredPosition: {x: 66, y: 15.100006}
   m_SizeDelta: {x: 52, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407483093
@@ -1443,5 +1443,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 407483094}
+    - target: {fileID: 8110407789575998847, guid: 4c8a33fb0c28c7c46add2eeaa2773938,
+        type: 3}
+      propertyPath: rotationalSpeed
+      value: 220
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8a33fb0c28c7c46add2eeaa2773938, type: 3}
