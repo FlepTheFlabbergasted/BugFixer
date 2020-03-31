@@ -1,4 +1,4 @@
-# bug-fixer
+# Bug Fixer - The Game!
 
 ## Vision
 
