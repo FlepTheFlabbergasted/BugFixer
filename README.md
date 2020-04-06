@@ -84,14 +84,14 @@ There is no winning, only faster, bigger bugs.
   - ~~Limit movement, little lag after mouse~~
   - Not att the way up too? - Not right now atleast
 
-### Phase 5
+### Phase 5 - Complete
 
 - Bugs
   - ~~Crawl on the ceiling, remove when reaching the turret~~
 - Turret
   - ~~Loses health when bug reaches it~~
 - UI/Player
-  - Implement and display health
+  - ~~Implement and display health~~
 
 ### Phase 6
 
